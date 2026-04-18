@@ -1,0 +1,6 @@
+every frame:
+    star.???  changes by a little
+    when ??? reaches a limit, it reverses
+    draw circle with size = star.???
+
+    . A Makefile tells make how to build your program.
