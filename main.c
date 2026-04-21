@@ -1,28 +1,9 @@
 #include "raylib.h"
+#include "star.h"
+
+// Uses raylib library to create a simple animation of pulsating stars on the screen. 
 
 
-typedef struct star {   
-    float x, y; // position
-    float diameter; // size of the star
-    float pulseSpeed; // speed at which the star pulses
-    int growing; // flag to indicate if the star is currently growing or shrinking
-} Star;
-
-void updateStar(Star *star) {
-     if (star->growing) {
-        star->diameter += star->pulseSpeed;
-        if (star->diameter >= 50) {
-            star->diameter -= star->pulseSpeed;
-            if (star->diameter <= 5) {
-                star->growing = 1; 
-            }
-        }
-    }
-}
-
-void setGrowingStatus(Star *star) {
-    star->growing = GetRandomValue(0, 1);
-}
 
 
 int main(void) {
