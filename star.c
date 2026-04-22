@@ -1,20 +1,30 @@
+#include "star.h"
+#include "raylib.h"
+
+
+float pulsationRange = 1.3f; 
+float pulsationSpeed = 0.001f;
+
+
+
 void updateStar(Star *star) {
-     if (star->growing) {
-        star->diameter += star->pulseSpeed;
-        if (star->diameter >= 50) {
-            star->diameter -= star->pulseSpeed;
-            star->growing = 0;
+     if (star->pulse.growing && star->pulse.diameter < star->diameter*3.0f) {
+        star->pulse.diameter += star->pulse.pulseSpeed;
+        if (star->pulse.diameter >= star->diameter*pulsationRange) {
+            star->pulse.growing = 0;
         }
     } else {
-        if (star->diameter <= 5) {
-                star->growing = 1; 
-            }
+        star->pulse.diameter -= star->pulse.pulseSpeed;
+        if (star->pulse.diameter <= star->diameter) {
+            star->pulse.growing = 1;
         }
     }
 }
 
+
+
 void setGrowingStatus(Star *star) {
-    star->growing = GetRandomValue(0, 1);
+    star->pulse.growing = GetRandomValue(0, 1);
 }
 
 Star createStar(float x, float y, float diameter, float pulseSpeed) {
@@ -24,8 +34,8 @@ Star createStar(float x, float y, float diameter, float pulseSpeed) {
     star.diameter = diameter;
     star.pulse.x = x;
     star.pulse.y = y;
-    star.pulse.diameter = diameter + 10; // Example pulse diameter
-    star.pulse.pulseSpeed = pulseSpeed;
+    star.pulse.diameter = diameter; // Example pulse diameter
+    star.pulse.pulseSpeed = diameter * pulsationSpeed; // Example pulse speed based on diameter
     star.pulse.growing = 1;
     return star;
 }
