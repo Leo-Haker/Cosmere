@@ -15,11 +15,11 @@ int main(void) {
     InitWindow(screenWidth, screenHeight, "Pulsating Stars");
 
    
-    const int numStars = 100;
+    const int numStars = 200;
     Star stars[numStars];
 
     for (int i = 0; i < numStars; i++) {
-        stars[i] = createStar(GetRandomValue(0, screenWidth), GetRandomValue(0, screenHeight), GetRandomValue(20, 50), 1);
+        stars[i] = createStar(GetRandomValue(0, screenWidth), GetRandomValue(0, screenHeight), GetRandomValue(1, 5), 1);
     }
 
     while (!WindowShouldClose()) {
@@ -32,7 +32,7 @@ int main(void) {
 
         for (int i = 0; i < numStars; i++) {
            // DrawCircle(stars[i].pulse.x, stars[i].pulse.y, stars[i].pulse.diameter / 2, pulseColor);
-            DrawCircle(stars[i].x, stars[i].y, stars[i].diameter / 2, starColor);
+            DrawCircle(stars[i].x, stars[i].y, stars[i].diameter / 2, stars[i].color);
         }
 
         EndDrawing();

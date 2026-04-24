@@ -17,6 +17,7 @@ typedef struct star {
     float x, y; // position
     float diameter; // size of the star
     float pulseSpeed;
+    float accumulator;
     int growing;
     Color color;
 } Star;
