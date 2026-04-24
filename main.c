@@ -19,7 +19,7 @@ int main(void) {
     Star stars[numStars];
 
     for (int i = 0; i < numStars; i++) {
-        stars[i] = createStar(GetRandomValue(0, screenWidth), GetRandomValue(0, screenHeight), GetRandomValue(5, 20), 1);
+        stars[i] = createStar(GetRandomValue(0, screenWidth), GetRandomValue(0, screenHeight), GetRandomValue(20, 50), 1);
     }
 
     while (!WindowShouldClose()) {
@@ -31,7 +31,7 @@ int main(void) {
         ClearBackground(BLACK);
 
         for (int i = 0; i < numStars; i++) {
-            DrawCircle(stars[i].pulse.x, stars[i].pulse.y, stars[i].pulse.diameter / 2, pulseColor);
+           // DrawCircle(stars[i].pulse.x, stars[i].pulse.y, stars[i].pulse.diameter / 2, pulseColor);
             DrawCircle(stars[i].x, stars[i].y, stars[i].diameter / 2, starColor);
         }
 

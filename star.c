@@ -3,23 +3,24 @@
 
 
 float pulsationRange = 1.3f; 
-float pulsationSpeed = 0.001f;
+float pulsationSpeed = 0.01f;
 
 
 
-void updateStar(Star *star) {
-     if (star->pulse.growing && star->pulse.diameter < star->diameter*3.0f) {
-        star->pulse.diameter += star->pulse.pulseSpeed;
-        if (star->pulse.diameter >= star->diameter*pulsationRange) {
-            star->pulse.growing = 0;
+void updateStar(Star *star, int i) {
+     if (star->pulse.growing && star->color <= {255, 255, 255, 255}) {
+            star->color.a += 10;
+        if (star->color.a >= 255) {
+            star->growing = 0;
         }
     } else {
-        star->pulse.diameter -= star->pulse.pulseSpeed;
-        if (star->pulse.diameter <= star->diameter) {
-            star->pulse.growing = 1;
+        star->color.a -= 10;
+        if (star->color.a <= 180) {
+            star->growing = 1;
         }
     }
 }
+
 
 
 
@@ -32,10 +33,8 @@ Star createStar(float x, float y, float diameter, float pulseSpeed) {
     star.x = x;
     star.y = y;
     star.diameter = diameter;
-    star.pulse.x = x;
-    star.pulse.y = y;
-    star.pulse.diameter = diameter; // Example pulse diameter
-    star.pulse.pulseSpeed = diameter * pulsationSpeed; // Example pulse speed based on diameter
-    star.pulse.growing = 1;
+    star.growing;
+    star.pulseSpeed = pulsationSpeed; // Example pulse speed based on diameter
+    star.color = {255, 255, 255, 180};
     return star;
 }
